@@ -74,3 +74,97 @@ The function includes:
 
 ## License
 This project is licensed under the MIT License.
+
+
+# Airtable Python Scripts
+
+This repository contains Python scripts to interact with Airtable:
+- `fetch_records.py` - Retrieve records from an Airtable table.
+- `create_record.py` - Insert a new record.
+- `modify_record.py` - Update an existing record.
+- `delete_record.py` - Remove a record.
+
+Each script includes:
+- Error handling for authentication, permissions, rate limits, and network errors.
+- Retries with exponential backoff.
+- Modular functions for easy reuse.
+
+## Prerequisites
+
+Ensure you have the following:
+- Python 3 installed.
+- An Airtable API key.
+- Your Base ID and Table ID from Airtable.
+- Required Python packages installed:
+
+```sh
+pip install pyairtable
+```
+
+## Configuration
+
+Each script requires an Airtable API key, Base ID, and Table ID. Update the following variables in the script:
+
+```python
+API_KEY = "your_airtable_api_key"
+BASE_ID = "your_base_id"
+TABLE_ID = "your_table_id"
+```
+
+## Usage
+
+### Fetch Records
+
+```sh
+python fetch_records.py
+```
+
+### Create a New Record
+
+```sh
+python create_record.py
+```
+
+Modify `DATA` in `create_record.py` to match your table fields:
+
+```python
+DATA = {"Name": "John Doe", "Email": "john@example.com"}
+```
+
+### Modify an Existing Record
+
+```sh
+python modify_record.py
+```
+
+Update `RECORD_ID` and `UPDATE_DATA` in `modify_record.py`:
+
+```python
+RECORD_ID = "rec1234567890"
+UPDATE_DATA = {"Status": "Completed"}
+```
+
+### Delete a Record
+
+```sh
+python delete_record.py
+```
+
+Set `RECORD_ID` in `delete_record.py`:
+
+```python
+RECORD_ID = "rec1234567890"
+```
+
+## Error Handling
+
+- **401 Unauthorized**: Check if your API key is correct.
+- **403 Forbidden**: Verify your Airtable account permissions.
+- **404 Not Found**: Ensure the record exists.
+- **429 Rate Limit**: The script will retry automatically with exponential backoff.
+- **Network Errors**: The script will retry up to 3 times.
+
+## License
+
+This project is open-source under the MIT License.
+
