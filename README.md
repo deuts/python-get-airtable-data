@@ -96,6 +96,8 @@ RECORD_ID = "rec1234567890"
 ✅ Handles API errors and rate limits with retries  
 ✅ Uses table ID instead of table name for stability 
 
+### Usage
+
 #### Example: Fetch All Records
 ```python
 from fetch_records import fetch_airtable_data
